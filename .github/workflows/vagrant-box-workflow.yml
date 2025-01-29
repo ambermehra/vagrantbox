@@ -46,6 +46,11 @@ jobs:
       - name: Build Vagrant Box
         run: packer build packer-vagrant-al2bx.pkr.hcl
 
+      - name: List contents of the output directory
+        run: |
+          echo "Listing contents of /amazonlnux-2box/"
+          ls -l /amazonlnux-2box/
+
       - name: Upload Box Artifact
         uses: actions/upload-artifact@v4
         with:
