@@ -33,9 +33,5 @@ build {
   }
  
   #we can upload vagrant box artifacts to vagrant clod or S3 so any one can download it .
-  
-  post-processor "vagrant" {
-    output = "/amazonlnux-2box/al2chef.box"
-   }
-
+ 
 }
