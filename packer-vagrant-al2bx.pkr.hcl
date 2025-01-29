@@ -13,7 +13,7 @@ packer {
 
 source "vagrant" "example" {
   communicator    = "ssh"
-  output_dir      = "amazonlinux-2box"
+  #output_dir      = "amazonlinux-2box"
   provider        = "virtualbox"
   skip_add        = true
   source_path     = "bento/amazonlinux-2"
@@ -32,8 +32,9 @@ build {
     ]
   }
  
-  post-processor "vagrant" {
-    output = "./amazonlnux-2box/al2chef.box"
-  }
+  post-processor "vagrant" {}
+  #post-processor "vagrant" {
+  #  output = "./amazonlnux-2box/al2chef.box"
+  #}
 
 }
