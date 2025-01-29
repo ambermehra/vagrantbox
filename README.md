@@ -2,6 +2,11 @@
 
 This repository contains Packer templates and Chef cookbooks to build an  Vagrant box on base "bento/amazonlinux-2" on top of base box installed AWS SSM Plugin, CloudWatch Agent, and PostgreSQL.
 
+### Option 1:
+   Building vagrant box using packer tool
+### Option 2:
+   Building vagarnt box using Vagrantfile
+
 ## Prerequisites
 
 - VirtualBox (latest version recommended)
@@ -15,7 +20,8 @@ This repository contains Packer templates and Chef cookbooks to build an  Vagran
 .
 ├── .github
 │   └── workflows
-│       └── build-vagrant-box.yml    # GitHub Actions workflow for automated builds
+│       └── packer-vagrant-workflow.yml   # GitHub Actions workflow for automated builds using packer tool
+        └── vagrantfile-build-box.yml   # GitHub Actions workflow for automated builds using Vagrantfile
 ├── cookbooks
 │   ├── aws_ssm_plugin              # Cookbook for AWS SSM Plugin installation
 │   │   ├── recipes
@@ -33,6 +39,7 @@ This repository contains Packer templates and Chef cookbooks to build an  Vagran
 │       └── attributes
 │           └── default.rb
 ├── packer-vagrant-al2bx.pkr.hcl    # Packer template for building the box
+├── Vagrantfile                     # Vagranfile which can use to launch box virtual box VM
 └── README.md                       # This file
 ```
 

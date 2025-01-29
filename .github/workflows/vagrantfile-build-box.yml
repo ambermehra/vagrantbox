@@ -1,0 +1,51 @@
+name: Vagrant CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-vagrant:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget unzip virtualbox
+
+    - name: Install Vagrant
+      run: |
+        wget https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3-1_amd64.deb
+        sudo dpkg -i vagrant_2.4.3-1_amd64.deb
+        vagrant --version
+
+    - name: Check Disk Space
+      run: df -h
+
+    - name: Initialize and provision Vagrant
+      run: |
+        vagrant up 
+        
+    - name: Test Amazon CloudWatch Agent
+      run: |
+        vagrant ssh -c "systemctl status amazon-cloudwatch-agent"
+
+    - name: Test PostgreSQL
+      run: |
+        vagrant ssh -c "systemctl status postgresql"
+
+    - name: Test Session Manager Plugin
+      run: |
+        vagrant ssh -c "rpm -qa session*"
+
+    - name: Destroy Vagrant VM
+      run: |
+        vagrant destroy -f
