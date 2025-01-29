@@ -46,9 +46,9 @@ jobs:
       - name: Build Vagrant Box
         run: packer build packer-vagrant-al2bx.pkr.hcl
 
-      - name: Upload Box Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vagrant-box
-          path: amazonlnux-2box/al2chef.box
-          retention-days: 30  # Increased retention period
+      #- name: Upload Box Artifact not supported in github so we can clone do vagrant box or upload on vagrant cloud/s3
+       # uses: actions/upload-artifact@v4
+       # with:
+       #   name: vagrant-box
+       #   path: amazonlnux-2box/al2chef.box
+       #   retention-days: 30  # Increased retention period
