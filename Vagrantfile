@@ -4,8 +4,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "chef_solo" do |chef|
     chef.arguments = '--chef-license accept'
     chef.cookbooks_path = ["cookbooks"]
-    chef.add_recipe "cloudwatch"
-    chef.add_recipe "ssm"
-    chef.add_recipe "postgres"
+    chef.add_recipe "cloudwatch_agent"
+    chef.add_recipe "aws_ssm_plugin"
+    chef.add_recipe "postgres_db"
   end
 end
